@@ -4,510 +4,831 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vaishnavi Selvakumar | Administrative Assistant Portfolio</title>
+  <meta name="description" content="Professional portfolio website for Vaishnavi Selvakumar, Administrative Assistant." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #183b5b;
-      --secondary: #2f6f9f;
-      --accent: #dbeaf5;
-      --light: #f7fafc;
-      --white: #ffffff;
-      --text: #1f2933;
-      --muted: #6b7c93;
-      --border: #e4eaf1;
-      --shadow: 0 10px 30px rgba(17, 38, 57, 0.08);
-      --radius: 18px;
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --surface-2: #f8fbff;
+      --text: #18212b;
+      --muted: #5b6877;
+      --primary: #123a63;
+      --primary-2: #215f99;
+      --accent: #dcecff;
+      --border: #e3ebf3;
+      --shadow: 0 18px 50px rgba(16, 38, 63, 0.08);
+      --shadow-soft: 0 10px 30px rgba(16, 38, 63, 0.06);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max: 1180px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      background: linear-gradient(to bottom, #eef4f8, #f9fbfd);
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(33,95,153,0.08), transparent 30%),
+        radial-gradient(circle at top right, rgba(18,58,99,0.10), transparent 28%),
+        var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
 
     .container {
-      width: 92%;
-      max-width: 1180px;
+      width: min(calc(100% - 32px), var(--max));
       margin: 0 auto;
     }
 
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(14px);
+      background: rgba(244, 247, 251, 0.85);
+      border-bottom: 1px solid rgba(227, 235, 243, 0.7);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
     .hero {
-      padding: 48px 0 24px;
+      padding: 42px 0 24px;
     }
 
     .hero-card {
-      background: var(--white);
-      border-radius: 28px;
+      background: linear-gradient(145deg, #ffffff, #f6faff);
+      border: 1px solid var(--border);
       box-shadow: var(--shadow);
+      border-radius: 34px;
       overflow: hidden;
       display: grid;
-      grid-template-columns: 340px 1fr;
-      min-height: 420px;
+      grid-template-columns: 360px 1fr;
+      min-height: 560px;
     }
 
-    .hero-left {
-      background: linear-gradient(160deg, var(--primary), var(--secondary));
+    .hero-side {
+      background: linear-gradient(180deg, #123a63 0%, #194a79 52%, #215f99 100%);
       color: white;
-      padding: 36px 28px;
-      text-align: center;
+      padding: 34px 28px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-side::before,
+    .hero-side::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      pointer-events: none;
+    }
+
+    .hero-side::before {
+      width: 220px;
+      height: 220px;
+      top: -70px;
+      right: -70px;
+    }
+
+    .hero-side::after {
+      width: 180px;
+      height: 180px;
+      bottom: -70px;
+      left: -50px;
+    }
+
+    .profile-wrap {
+      position: relative;
+      z-index: 1;
     }
 
     .profile-photo {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
+      width: 210px;
+      height: 210px;
       object-fit: cover;
-      border: 6px solid rgba(255,255,255,0.25);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.18);
-      margin-bottom: 22px;
-      background: #cdd8e3;
+      border-radius: 26px;
+      border: 4px solid rgba(255,255,255,0.22);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.22);
+      background: rgba(255,255,255,0.15);
+      margin-top: 8px;
     }
 
-    .hero-left h1 {
-      font-size: 2rem;
-      margin-bottom: 8px;
-      line-height: 1.2;
-    }
-
-    .hero-left p {
-      font-size: 1rem;
-      opacity: 0.95;
-      margin-bottom: 18px;
-    }
-
-    .contact-list {
-      list-style: none;
-      width: 100%;
+    .photo-note {
       margin-top: 10px;
+      font-size: 0.78rem;
+      opacity: 0.82;
     }
 
-    .contact-list li {
-      margin: 10px 0;
-      font-size: 0.95rem;
+    .hero-side h1 {
+      margin-top: 24px;
+      font-size: 2rem;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-side .role {
+      margin-top: 10px;
+      font-size: 1rem;
+      opacity: 0.94;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-stack {
+      list-style: none;
+      margin-top: 24px;
+      width: 100%;
+      display: grid;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-stack li {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 11px 12px;
+      border-radius: 12px;
+      font-size: 0.94rem;
       word-break: break-word;
     }
 
-    .hero-right {
-      padding: 42px 38px;
+    .hero-main {
+      padding: 42px 42px 34px;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    .tag {
-      display: inline-block;
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
       background: var(--accent);
       color: var(--primary);
-      padding: 8px 14px;
       border-radius: 999px;
-      font-size: 0.86rem;
-      font-weight: 600;
+      font-size: 0.84rem;
+      font-weight: 700;
+      width: fit-content;
       margin-bottom: 18px;
     }
 
-    .hero-right h2 {
-      font-size: 2rem;
-      margin-bottom: 14px;
+    .hero-main h2 {
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
       color: var(--primary);
-      line-height: 1.25;
-    }
-
-    .hero-right p {
-      font-size: 1rem;
-      color: var(--muted);
       max-width: 760px;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
 
-    .hero-buttons {
+    .hero-main p {
+      color: var(--muted);
+      font-size: 1.02rem;
+      max-width: 760px;
+    }
+
+    .hero-actions {
+      margin-top: 26px;
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-top: 6px;
     }
 
     .btn {
-      display: inline-block;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 20px;
+      border-radius: 12px;
+      font-weight: 700;
       transition: 0.25s ease;
+      border: 1px solid transparent;
     }
 
     .btn-primary {
       background: var(--primary);
       color: white;
+      box-shadow: var(--shadow-soft);
     }
 
-    .btn-primary:hover {
-      background: #102b44;
-    }
+    .btn-primary:hover { background: #0d2e4d; transform: translateY(-1px); }
 
     .btn-secondary {
-      border: 1px solid var(--border);
-      background: #f8fbfe;
+      background: white;
+      border-color: var(--border);
       color: var(--primary);
     }
 
-    .btn-secondary:hover {
-      background: #edf5fb;
+    .btn-secondary:hover { background: var(--surface-2); }
+
+    .stats {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
     }
 
-    .main-grid {
+    .stat {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.45rem;
+      color: var(--primary);
+      margin-bottom: 4px;
+      letter-spacing: -0.03em;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    section {
+      padding: 20px 0;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      color: var(--primary);
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 22px;
+    }
+
+    .grid-2 {
       display: grid;
-      grid-template-columns: 1.1fr 2fr;
-      gap: 26px;
-      margin: 26px 0 48px;
+      grid-template-columns: 1.05fr 1.35fr;
+      gap: 24px;
     }
 
     .card {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
       padding: 28px;
-      margin-bottom: 24px;
     }
 
     .card h3 {
-      color: var(--primary);
       font-size: 1.25rem;
-      margin-bottom: 18px;
-      position: relative;
-      padding-bottom: 10px;
-    }
-
-    .card h3::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 58px;
-      height: 3px;
-      background: var(--secondary);
-      border-radius: 20px;
-    }
-
-    .skills-list,
-    .tools-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .chip {
-      background: #f0f6fb;
       color: var(--primary);
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 0.92rem;
-      border: 1px solid #d9e8f3;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
     }
 
-    .highlight-box {
-      background: linear-gradient(180deg, #f7fbff, #eef6fb);
-      border: 1px solid #ddeaf4;
-      border-radius: 14px;
+    .about-text {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .badge-list,
+    .skill-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .badge,
+    .skill {
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #eff6ff;
+      color: var(--primary);
+      border: 1px solid #d8e7fb;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .focus-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .focus-item {
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #fbfdff, #f6fbff);
+      border-radius: 18px;
       padding: 16px 18px;
-      margin-bottom: 14px;
     }
 
-    .highlight-box strong {
+    .focus-item strong {
       display: block;
       color: var(--primary);
       margin-bottom: 6px;
     }
 
-    .timeline-item {
-      position: relative;
-      padding-left: 24px;
-      margin-bottom: 28px;
-      border-left: 2px solid #dce6ef;
+    .focus-item p {
+      color: var(--muted);
+      font-size: 0.96rem;
     }
 
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -7px;
-      top: 5px;
-      width: 12px;
-      height: 12px;
-      background: var(--secondary);
-      border-radius: 50%;
+    .experience-list {
+      display: grid;
+      gap: 18px;
     }
 
-    .timeline-item h4 {
-      font-size: 1.1rem;
+    .experience-item {
+      border-left: 3px solid #d5e4f4;
+      padding-left: 18px;
+    }
+
+    .experience-item h4 {
+      font-size: 1.12rem;
       color: var(--text);
       margin-bottom: 4px;
     }
 
-    .timeline-meta {
-      font-size: 0.94rem;
+    .meta {
       color: var(--muted);
+      font-size: 0.95rem;
       margin-bottom: 10px;
     }
 
-    .timeline-item ul {
+    .experience-item ul {
       padding-left: 18px;
+      color: #415264;
     }
 
-    .timeline-item li {
-      margin-bottom: 8px;
-      color: #415366;
+    .experience-item li { margin-bottom: 8px; }
+
+    .tool-grid,
+    .gallery-grid,
+    .education-grid {
+      display: grid;
+      gap: 16px;
     }
 
-    .education-item {
-      margin-bottom: 18px;
-      padding: 16px 18px;
-      background: #f8fbfd;
+    .tool-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .tool-box,
+    .gallery-card,
+    .edu-card {
       border: 1px solid var(--border);
-      border-radius: 14px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #ffffff, #f9fbfe);
+      padding: 18px;
     }
 
-    .education-item h4 {
-      color: var(--text);
-      margin-bottom: 5px;
+    .tool-box strong,
+    .edu-card strong {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 8px;
     }
 
-    .education-item p {
+    .tool-box p,
+    .edu-card p {
       color: var(--muted);
       font-size: 0.95rem;
+    }
+
+    .gallery-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .gallery-photo {
+      width: 100%;
+      aspect-ratio: 4 / 4.3;
+      object-fit: cover;
+      border-radius: 16px;
+      margin-bottom: 12px;
+      background: #dbe5ef;
+    }
+
+    .gallery-card h4 {
+      color: var(--primary);
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .gallery-card p {
+      color: var(--muted);
+      font-size: 0.93rem;
     }
 
     .footer {
-      text-align: center;
+      padding: 26px 0 46px;
       color: var(--muted);
-      padding: 10px 0 40px;
+      text-align: center;
       font-size: 0.95rem;
     }
 
-    @media (max-width: 960px) {
-      .hero-card {
+    .hover-link:hover {
+    color: rgb(0, 247, 255);
+    }
+
+    @media (max-width: 1050px) {
+      .hero-card,
+      .grid-2 {
         grid-template-columns: 1fr;
       }
 
-      .main-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-left,
-      .hero-right {
-        padding: 30px 24px;
-      }
-
-      .hero-right h2 {
-        font-size: 1.7rem;
+      .stats,
+      .tool-grid,
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 720px) {
+      .hero-main,
+      .hero-side,
+      .card { padding: 22px; }
+
+      .stats,
+      .tool-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
       .profile-photo {
-        width: 145px;
-        height: 145px;
+        width: 180px;
+        height: 180px;
       }
 
-      .hero-left h1 {
-        font-size: 1.7rem;
-      }
-
-      .hero-right h2 {
-        font-size: 1.4rem;
-      }
-
-      .card {
-        padding: 22px;
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
 <body>
+  <div class="topbar">
+    <div class="container nav">
+      <div class="brand">Vaishnavi Selvakumar</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#gallery">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
 
   <div class="container">
     <section class="hero">
       <div class="hero-card">
-        <div class="hero-left">
-          <img src="your-photo.jpg" alt="Vaishnavi Selvakumar" class="profile-photo" />
+        <aside class="hero-side">
+          <div class="profile-wrap">
+            <img src="profile.jpg" alt="Vaishnavi Selvakumar profile photo" class="profile-photo">
+          </div>
           <h1>Vaishnavi Selvakumar</h1>
-          <p>Administrative Assistant Portfolio</p>
+          <div class="role">Administrative Assistant | Office Support | Client Coordination</div>
 
-          <ul class="contact-list">
+          <ul class="contact-stack">
             <li>Scarborough, ON, Canada</li>
             <li>+1 (437) 261-5137</li>
             <li>vaishuselva99@gmail.com</li>
-            <li>LinkedIn: Add your profile link</li>
+            <li>LinkedIn: <a class="hover-link" href="https://www.linkedin.com/in/vaishnavi-selvakumar-bb24501a0/">Profile URL</a></li>
           </ul>
-        </div>
+        </aside>
 
-        <div class="hero-right">
-          <span class="tag">Administrative Support | Customer Service | Office Operations</span>
-          <h2>Organized, client-focused, and detail-oriented administrative professional</h2>
+        <div class="hero-main">
+          <div class="eyebrow">Professional Portfolio Website</div>
+          <h2>Supporting office operations with organization, professionalism, and strong client service.</h2>
           <p>
-            I bring experience in customer communication, scheduling, document handling,
-            CRM updates, and office coordination. I support smooth day-to-day operations,
-            maintain accurate records, and work effectively in fast-paced environments that
-            require professionalism, discretion, and strong attention to detail.
+            Customer-focused administrative professional with experience in handling inquiries, scheduling appointments, maintaining accurate records, supporting office workflow, and coordinating across teams. Skilled in document management, client communication, CRM updates, and day-to-day administrative support in fast-paced environments.
           </p>
 
-          <div class="hero-buttons">
+          <div class="hero-actions">
             <a href="mailto:vaishuselva99@gmail.com" class="btn btn-primary">Email Me</a>
-            <a href="#" class="btn btn-secondary">View LinkedIn</a>
-            <a href="#" class="btn btn-secondary">Download Resume</a>
+            <a href="#contact" class="btn btn-secondary">Contact Details</a>
+            <a href="resume.pdf" class="btn btn-secondary">Download Resume</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>50+</strong>
+              <span>Daily client interactions managed</span>
+            </div>
+            <div class="stat">
+              <strong>25+</strong>
+              <span>Weekly appointments coordinated</span>
+            </div>
+            <div class="stat">
+              <strong>200+</strong>
+              <span>Records maintained accurately</span>
+            </div>
+            <div class="stat">
+              <strong>95%+</strong>
+              <span>Customer support satisfaction</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="main-grid">
-      <div>
+    <section id="about">
+      <div class="grid-2">
         <div class="card">
-          <h3>Core Skills</h3>
-          <div class="skills-list">
-            <span class="chip">Administrative Support</span>
-            <span class="chip">Customer Service</span>
-            <span class="chip">Client Communication</span>
-            <span class="chip">Appointment Scheduling</span>
-            <span class="chip">Calendar Coordination</span>
-            <span class="chip">CRM Data Entry</span>
-            <span class="chip">Document Management</span>
-            <span class="chip">File Organization</span>
-            <span class="chip">Microsoft Office</span>
-            <span class="chip">Report Accuracy</span>
-            <span class="chip">Confidential Records</span>
-            <span class="chip">Team Coordination</span>
+          <h3>About Me</h3>
+          <p class="about-text">
+            I am an administrative professional with experience in customer service, office support, scheduling, digital record maintenance, documentation, and communication. I am comfortable handling multiple priorities while maintaining accuracy, confidentiality, and professionalism. I work well with teams, adapt quickly to new systems, and focus on helping operations run smoothly.
+          </p>
+          <div class="badge-list">
+            <span class="badge">Administrative Support</span>
+            <span class="badge">Front Desk Assistance</span>
+            <span class="badge">Client Communication</span>
+            <span class="badge">Scheduling</span>
+            <span class="badge">Data Entry</span>
+            <span class="badge">Confidential Records</span>
           </div>
         </div>
 
         <div class="card">
-          <h3>Technical Tools</h3>
-          <div class="tools-list">
-            <span class="chip">HubSpot CRM</span>
-            <span class="chip">Excel</span>
-            <span class="chip">Word</span>
-            <span class="chip">Outlook</span>
-            <span class="chip">PowerPoint</span>
-            <span class="chip">Access</span>
-            <span class="chip">Google Workspace</span>
-            <span class="chip">Adobe PDF</span>
-            <span class="chip">WordPress</span>
-            <span class="chip">Canva</span>
-            <span class="chip">Figma</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Highlights</h3>
-
-          <div class="highlight-box">
-            <strong>50+ Daily Client Interactions</strong>
-            Managed phone, email, and in-person communication professionally and efficiently.
-          </div>
-
-          <div class="highlight-box">
-            <strong>25+ Weekly Appointments</strong>
-            Coordinated scheduling and follow-ups to support smooth workflow and service delivery.
-          </div>
-
-          <div class="highlight-box">
-            <strong>200+ Accurate Records Maintained</strong>
-            Updated and managed records with confidentiality and strong attention to detail.
-          </div>
-
-          <div class="highlight-box">
-            <strong>Cross-Functional Team Support</strong>
-            Assisted with communication, coordination, and administrative tasks across teams.
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Education</h3>
-
-          <div class="education-item">
-            <h4>Mobile Application Development & Strategy – Postgraduate</h4>
-            <p>George Brown College, Toronto, ON</p>
-            <p>September 2023 – September 2024</p>
-          </div>
-
-          <div class="education-item">
-            <h4>Software Engineering – Bachelor of Engineering</h4>
-            <p>University of Westminster, England, UK</p>
-            <p>January 2019 – September 2022</p>
+          <h3>What I Bring</h3>
+          <div class="focus-list">
+            <div class="focus-item">
+              <strong>Strong Office Coordination</strong>
+              <p>Experienced in managing schedules, supporting workflows, organizing records, and helping teams stay on track.</p>
+            </div>
+            <div class="focus-item">
+              <strong>Professional Client Communication</strong>
+              <p>Skilled in handling calls, emails, follow-ups, and inquiries with a helpful and polished approach.</p>
+            </div>
+            <div class="focus-item">
+              <strong>Attention to Detail</strong>
+              <p>Maintain accurate records, documentation, and administrative tasks while working in busy environments.</p>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <div>
-        <div class="card">
-          <h3>Professional Profile</h3>
-          <p>
-            Customer-focused administrative professional experienced in managing inquiries,
-            service requests, scheduling, and record maintenance. Skilled in client communication,
-            digital systems, document preparation, and supporting operational efficiency.
-            Proficient in Microsoft Office and CRM platforms, with the ability to adapt quickly
-            to new software and administrative processes.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Professional Experience</h3>
-
-          <div class="timeline-item">
+    <section id="experience">
+      <h2 class="section-title">Professional Experience</h2>
+      <p class="section-copy">A snapshot of the experience and day-to-day administrative strengths I bring to office-based roles.</p>
+      <div class="card">
+        <div class="experience-list">
+          <div class="experience-item">
             <h4>Administrative Assistant</h4>
-            <div class="timeline-meta">New Dawn Energy Solutions | Markham, Ontario | May 2024 – Present</div>
+            <div class="meta">New Dawn Energy Solutions | Markham, Ontario | May 2024 – Present</div>
             <ul>
-              <li>Managed 50+ daily client interactions through phone, email, and in-person communication.</li>
-              <li>Coordinated 25+ weekly appointments and service requests to improve workflow efficiency.</li>
-              <li>Maintained and updated 200+ records with accuracy, organization, and confidentiality.</li>
-              <li>Handled administrative tasks including filing, scanning, documentation, and reporting support.</li>
-              <li>Responded to inquiries and supported same-day issue resolution with a professional approach.</li>
-              <li>Managed inbox communications and prioritized follow-ups to keep operations on track.</li>
-              <li>Supported internal teams through coordination, updates, and cross-functional communication.</li>
-              <li>Assisted with invoice tracking, data entry, and general administrative support.</li>
-              <li>Organized digital and physical files to improve document retrieval efficiency.</li>
+              <li>Managed 50+ daily client interactions across phone, email, and in-person communication channels.</li>
+              <li>Coordinated 25+ weekly appointments and service requests to improve workflow efficiency and timely follow-up.</li>
+              <li>Maintained and updated 200+ records with strong accuracy, organization, and confidentiality.</li>
+              <li>Handled high-volume administrative tasks including filing, scanning, documentation, and reporting support.</li>
+              <li>Managed shared inbox communications and prioritized responses to support day-to-day task completion.</li>
+              <li>Supported cross-functional teams through coordination, internal communication, and ongoing follow-ups.</li>
+              <li>Assisted with invoice tracking, data entry, and general office administration tasks.</li>
+              <li>Organized digital and physical filing systems, improving document retrieval and day-to-day efficiency.</li>
               <li>Created and updated WordPress website content and supported marketing material preparation.</li>
             </ul>
           </div>
         </div>
+      </div>
+    </section>
 
+    <section id="skills">
+      <div class="grid-2">
         <div class="card">
-          <h3>Additional Strengths</h3>
-          <ul style="padding-left: 18px;">
-            <li>Strong ability to handle confidential information with professionalism and discretion.</li>
-            <li>Comfortable working in fast-paced environments with multiple competing priorities.</li>
-            <li>Skilled in written communication, administrative coordination, and accurate documentation.</li>
-            <li>Experienced in maintaining organized systems for files, schedules, and daily office tasks.</li>
-            <li>Able to quickly learn company-specific tools, systems, and internal processes.</li>
-          </ul>
+          <h3>Core Skills</h3>
+          <div class="skill-list">
+            <span class="skill">Customer Service Excellence</span>
+            <span class="skill">Client Relationship Management</span>
+            <span class="skill">Front Desk & Reception Management</span>
+            <span class="skill">Call Handling & Email Communication</span>
+            <span class="skill">Appointment Scheduling & Calendar Management</span>
+            <span class="skill">Data Entry & Data Accuracy</span>
+            <span class="skill">CRM Systems </span>
+            <span class="skill">Document Management & Record Keeping</span>
+            <span class="skill">Confidential Information Handling</span>
+            <span class="skill">Report Preparation & Documentation</span>
+            <span class="skill">Microsoft Excel (Data Tracking, Reports)</span>
+            <span class="skill">Microsoft Word (Documentation, Letters)</span>
+            <span class="skill">Outlook (Email & Calendar Coordination)</span>
+            <span class="skill">File Organization (Digital & Physical)</span>
+            <span class="skill">Office Operations Support</span>
+            <span class="skill">Meeting Coordination & Minutes</span>
+            <span class="skill">Stakeholder Communication</span>
+            <span class="skill">Problem Solving & Issue Resolution</span>
+            <span class="skill">Attention to Detail</span>
+            <span class="skill">Time Management & Multitasking</span>
+            <span class="skill">Team Collaboration</span>
+            <span class="skill">Adaptability & Fast Learning</span>
+            <span class="skill">Customer Complaint Resolution</span>
+            <span class="skill">Data Privacy & Security Awareness</span>
+            <span class="skill">Administrative Reporting Support</span>
+          </div>
         </div>
 
         <div class="card">
-          <h3>Contact</h3>
-          <p><strong>Email:</strong> vaishuselva99@gmail.com</p>
-          <p><strong>Phone:</strong> +1 (437) 261-5137</p>
-          <p><strong>Location:</strong> Scarborough, ON, Canada</p>
-          <p><strong>LinkedIn:</strong> Add your LinkedIn profile URL</p>
+          <h3>Tools & Systems</h3>
+       <div class="tool-grid">
+
+        <div class="tool-box">
+          <strong>Microsoft Office Suite</strong>
+          <p>Excel (data tracking, reports), Word (documentation), Outlook (email & calendar), PowerPoint, Access</p>
+        </div>
+
+        <div class="tool-box">
+          <strong>CRM Systems</strong>
+          <p>HubSpot (client records, follow-ups, pipeline tracking), basic Salesforce familiarity</p>
+        </div>
+
+        <div class="tool-box">
+          <strong>Enterprise & Office Systems</strong>
+          <p>DocuSign, ERP system exposure (SAP/Oracle basics), ServiceNow awareness</p>
+        </div>
+
+        <div class="tool-box">
+          <strong>Communication Tools</strong>
+          <p>Microsoft Teams, Zoom, Outlook, internal communication platforms, client coordination</p>
+        </div>
+
+        <div class="tool-box">
+          <strong>Scheduling & Coordination</strong>
+          <p>Calendar management, appointment booking, meeting coordination, boardroom scheduling</p>
+        </div>
+
+        <div class="tool-box">
+          <strong>Document & Records Systems</strong>
+          <p>Google Drive, SharePoint, digital filing, document control, version tracking</p>
+        </div>
+
+        <!-- <div class="tool-box">
+          <strong>Financial & Administrative Support</strong>
+          <p>Invoice tracking, accounts support, QuickBooks basics, data reconciliation</p>
+        </div> -->
+
+        <div class="tool-box">
+          <strong>Data & Reporting</strong>
+          <p>Excel reports, data validation, tracking systems, reporting templates and dashboards</p>
+        </div>
+
+        <div class="tool-box">
+          <strong>Compliance & Security</strong>
+          <p>Confidential data handling, privacy awareness (PIPEDA), secure record management, audit support</p>
+        </div>
+
+        <div class="tool-box">
+          <strong>Creative & Web Tools</strong>
+          <p>Canva, Figma (presentations & materials), WordPress (content updates)</p>
+        </div>
+
+        <div class="tool-box">
+          <strong>Customer Service Systems</strong>
+          <p>Ticketing systems, client inquiry tracking, service request handling, customer support workflows</p>
+        </div>
+
+        <div class="tool-box">
+          <strong>Front Desk & Office Operations</strong>
+          <p>Visitor management, access coordination, reception support, office supply tracking, daily operations</p>
+        </div>
+
+        <div class="tool-box">
+          <strong>Meeting & Event Coordination</strong>
+          <p>Boardroom booking, meeting scheduling, agenda preparation, minutes taking, event coordination</p>
+        </div>
+
+        <div class="tool-box">
+          <strong>Data Privacy & Information Security</strong>
+          <p>Confidential data handling, identity verification, access control, secure document storage</p>
+        </div>
+
+        <div class="tool-box">
+          <strong>Workflow & Process Coordination</strong>
+          <p>Task tracking, follow-up management, process improvement support, coordination across departments</p>
+        </div>
+
+        <div class="tool-box">
+          <strong>Document Processing & Administration</strong>
+          <p>Document formatting, scanning, digital records, file preparation, compliance documentation</p>
         </div>
       </div>
-    </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section id="gallery">
+      <h2 class="section-title">Portfolio Highlights</h2>
+      <p class="section-copy">Use this section to show your professional photos, workplace photos, or polished images that make your portfolio feel personal and complete.</p>
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <img src="photo-1.jpg" alt="Professional photo 1" class="gallery-photo">
+          <h4>Professional Headshot</h4>
+          <p>Use a clean professional image here to strengthen your personal brand.</p>
+        </div>
+        <div class="gallery-card">
+          <img src="photo-2.jpg" alt="Professional photo 2" class="gallery-photo">
+          <h4>Workplace or Business Photo</h4>
+          <p>Add a polished photo that reflects your professionalism and office-ready presence.</p>
+        </div>
+        <div class="gallery-card">
+          <img src="photo-3.jpg" alt="Professional photo 3" class="gallery-photo">
+          <h4>Personal Portfolio Photo</h4>
+          <p>Include another strong image that gives the website a premium and complete look.</p>
+        </div>
+      </div>
+    </section> -->
+
+    <section>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Education</h3>
+          <div class="education-grid">
+            <div class="edu-card">
+              <strong>Mobile Application Development & Strategy – Postgraduate</strong>
+              <p>George Brown College, Toronto, ON</p>
+              <p>September 2023 – September 2024</p>
+            </div>
+            <div class="edu-card">
+              <strong>Software Engineering – Bachelor of Engineering</strong>
+              <p>University of Westminster, England, UK</p>
+              <p>January 2019 – September 2022</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="contact">
+          <h3>Contact</h3>
+          <p class="about-text">
+            I am open to administrative, office support, coordinator, and customer-facing opportunities where I can contribute strong communication, organization, and day-to-day operational support.
+          </p>
+          <div class="focus-list">
+            <div class="focus-item">
+              <strong>Email</strong>
+              <p>vaishuselva99@gmail.com</p>
+            </div>
+            <div class="focus-item">
+              <strong>Phone</strong>
+              <p>+1 (437) 261-5137</p>
+            </div>
+            <div class="focus-item">
+              <strong>Location</strong>
+              <p>Scarborough, Ontario, Canada</p>
+            </div>
+            <div class="focus-item">
+              <strong>LinkedIn</strong>
+              <p><a class="hover-link" href="https://www.linkedin.com/in/vaishnavi-selvakumar-bb24501a0/" target="_blank" title="Go to my linked in profile">Go to my linked in profile</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <div class="footer">
       © 2026 Vaishnavi Selvakumar | Administrative Assistant Portfolio
     </div>
   </div>
-
 </body>
 </html>
